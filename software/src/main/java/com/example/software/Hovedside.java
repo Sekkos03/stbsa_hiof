@@ -1,4 +1,4 @@
 package com.example.software;
 
-public record Hovedside(int i) {
+public record Hovedside() {
 }
