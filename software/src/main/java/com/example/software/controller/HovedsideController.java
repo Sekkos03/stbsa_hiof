@@ -1,14 +1,14 @@
-package com.example.software;
+package com.example.software.controller;
 
+import com.example.software.Hovedside;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HovedsideController {
 
     @GetMapping("/hovedside")
-    public Hovedside hovedside(@RequestParam(value = "i", defaultValue = "0") int i) {
-     return new Hovedside(i);
+    public Hovedside hovedside() {
+     return new Hovedside();
     }
 }
