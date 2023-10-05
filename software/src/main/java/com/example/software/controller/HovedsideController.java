@@ -15,6 +15,11 @@ public class HovedsideController {
                 "INSERT INTO EMPLOYEE VALUES (?)", id);
     }
 
+    public int removeEmplyee(int id) {
+        return jdbcTemplate.update(
+                "DELETE FROM EMPLOYEE WHERE ID =?", id);
+    }
+
     @GetMapping("/hovedside")
     public Hovedside hovedside() {
      return new Hovedside();
