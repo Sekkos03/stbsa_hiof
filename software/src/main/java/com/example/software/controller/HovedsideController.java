@@ -28,6 +28,6 @@ public class HovedsideController {
     @GetMapping("/hovedside")
     public Hovedside hovedside() {
         allEmpoyee();
-     return new Hovedside();
+        return new Hovedside();
     }
 }
