@@ -20,9 +20,14 @@ public class HovedsideController {
                 "DELETE FROM EMPLOYEE WHERE ID =?", id);
     }
 
+    public int allEmpoyee() {
+        return jdbcTemplate.queryForObject(
+                "SELECT * FROM EMPLOYEE", Integer.class);
+    }
+
     @GetMapping("/hovedside")
     public Hovedside hovedside() {
-        addEmplyee(1);
+        allEmpoyee();
      return new Hovedside();
     }
 }
