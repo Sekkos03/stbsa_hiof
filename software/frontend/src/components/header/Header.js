@@ -23,7 +23,7 @@ const Header = () => {
                     </form>
 
                     <div className="text-end">
-                        <Button type="button" className="btn btn-outline-light me-2">Login</Button>
+                        <a href="http://localhost:3000/login"><Button type="button" className="btn btn-outline-light me-2">Login</Button></a>
                         <Button type="button" className="btn btn-warning">Sign-up</Button>
                     </div>
                 </div>
