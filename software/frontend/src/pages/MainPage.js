@@ -14,7 +14,6 @@ function MainPage() {
             <div className = "image-Container">
             <img src = {picture1} id = "big-Picture" className=''/>
             </div>
-
             <MainPageCountryDestination/>
 
         </>
