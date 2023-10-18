@@ -1,7 +1,8 @@
 import React from 'react';
 import Button from "react-bootstrap/button";
+import {Link} from "react-router-dom";
 
-const Header = () => {
+function Header() {
     return (
         <header className="p-3 bg-dark text-white">
             <div className="container">
@@ -23,13 +24,15 @@ const Header = () => {
                     </form>
 
                     <div className="text-end">
-                        <a href="http://localhost:3000/login"><Button type="button" className="btn btn-outline-light me-2">Login</Button></a>
+                        <Link to={"/login"}>
+                        <Button type="button" className="btn btn-outline-light me-2">Login</Button>
+                        </Link>
                         <Button type="button" className="btn btn-warning">Sign-up</Button>
                     </div>
                 </div>
             </div>
         </header>
     );
-};
+}
 
 export default Header;
