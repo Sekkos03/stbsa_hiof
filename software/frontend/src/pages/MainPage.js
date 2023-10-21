@@ -3,7 +3,8 @@ import Header from '../components/header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import picture1 from "../pictures/picture1.jpg";
 import './MainPage.css'
-import MainPageCountryDestination from "../components/MainPageCountryDestinations";
+import MainPageCountryDestination from "../components/destinations/PopularCountryDestinations";
+import MainPageCityDestination from "../components/destinations/populareCitydestination";
 
 
 function MainPage() {
@@ -15,7 +16,7 @@ function MainPage() {
             <img src = {picture1} id = "big-Picture" className=''/>
             </div>
             <MainPageCountryDestination/>
-
+            <MainPageCityDestination/>
         </>
     );
 }
