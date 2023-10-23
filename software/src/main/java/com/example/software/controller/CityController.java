@@ -1,21 +1,23 @@
 package com.example.software.controller;
 
-import com.example.software.service.City;
+import com.example.software.City;
 import com.example.software.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Map;
 
-@Controller
+@RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class CityController {
+
     @Autowired
     private CityService cityService;
 
     @GetMapping("/allCitys")
-    public List<String> getAllCitys() {
+    public List<City> getAllCitys() {
         return cityService.getAllCitys();
     }
 
