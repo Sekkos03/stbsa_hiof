@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from "react-bootstrap/button";
 import {Link} from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Header() {
     return (
@@ -16,6 +17,7 @@ function Header() {
                         <li><a href="#" className="nav-link px-2 text-white">Features</a></li>
                         <li><a href="#" className="nav-link px-2 text-white">FAQs</a></li>
                         <li><a href="#" className="nav-link px-2 text-white">About</a></li>
+                        <h1><i className="bi bi-cart"></i></h1>
                     </ul>
 
                     <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">

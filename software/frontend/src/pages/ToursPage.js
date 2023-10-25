@@ -35,7 +35,7 @@ function ToursPage(){
                     </div>
                 </div>
             </div>
-            <BokingForm maxPeople={tour.MaxPeople}/>
+            <BokingForm maxPeople={tour.maxPeople}/>
         </>
     )
 }
