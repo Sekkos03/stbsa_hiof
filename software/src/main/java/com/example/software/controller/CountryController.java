@@ -16,8 +16,8 @@ public class CountryController {
     @Autowired
     private CountryService countryService;
 
-    @GetMapping("/allcountry")
-    public List<Country> getAllCitys() {
+    @GetMapping("/allCountries")
+    public List<Country> getAllCountries() {
         return countryService.getAllCountry();
     }
 }
