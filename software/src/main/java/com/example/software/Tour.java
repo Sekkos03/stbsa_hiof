@@ -7,7 +7,7 @@ public class Tour {
     private String description;
     private int price;
     private int maxPeople;
-    private String toru_picture;
+    private String tour_picture;
 
     public Tour() {
     }
@@ -60,11 +60,11 @@ public class Tour {
         this.maxPeople = maxPeople;
     }
 
-    public String getToru_picture() {
-        return toru_picture;
+    public String getTour_picture() {
+        return tour_picture;
     }
 
-    public void setToru_picture(String toru_picture) {
-        this.toru_picture = toru_picture;
+    public void setTour_picture(String toru_picture) {
+        this.tour_picture = toru_picture;
     }
 }

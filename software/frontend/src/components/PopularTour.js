@@ -21,7 +21,7 @@ function PopularTour() {
             <Row className="g-3">
                 {tour.slice(0, 8).map((tour) => (
                     <Col key={tour.tourID} xs={12} sm={6} md={4} lg={3}>
-                        <Link to={"/3"} style={{textDecoration: "none" }}>
+                        <Link to={"Tours/"+ tour.tourID} style={{textDecoration: "none" }}>
                             <Card>
                                 <Card.Img variant="top" src={tour.tour_picture} />
                                 <Card.Body>

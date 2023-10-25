@@ -17,4 +17,7 @@ public class TourService {
         return jdbcTemplate.query("select * from tour", new TourRowMapper());
     }
 
+    public Tour getOneTourByID(int tourID) {
+        return jdbcTemplate.queryForObject("select * from tour WHERE tourID = ?", new TourRowMapper(), tourID);
+    }
 }
