@@ -5,6 +5,7 @@ import picture1 from "../pictures/picture1.jpg";
 import './MainPage.css'
 import MainPageCountryDestination from "../components/destinations/PopularCountryDestinations";
 import MainPageCityDestination from "../components/destinations/populareCitydestination";
+import PopularTour from "../components/PopularTour";
 
 
 function MainPage() {
@@ -17,6 +18,7 @@ function MainPage() {
             </div>
             <MainPageCountryDestination/>
             <MainPageCityDestination/>
+            <PopularTour />
         </>
     );
 }
