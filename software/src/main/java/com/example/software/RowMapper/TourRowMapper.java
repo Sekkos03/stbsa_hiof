@@ -20,7 +20,7 @@ public class TourRowMapper implements RowMapper<Tour> {
         obj.setDescription(rs.getString("description"));
         obj.setPrice(rs.getInt("price"));
         obj.setMaxPeople(rs.getInt("maxPeople"));
-        obj.setToru_picture(rs.getString("toru_picture"));
+        obj.setToru_picture(rs.getString("tour_picture"));
         return obj;
     }
 }

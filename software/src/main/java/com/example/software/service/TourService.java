@@ -13,7 +13,7 @@ public class TourService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<Tour> getAllCountry() {
+    public List<Tour> getAllTours() {
         return jdbcTemplate.query("select * from tour", new TourRowMapper());
     }
 
