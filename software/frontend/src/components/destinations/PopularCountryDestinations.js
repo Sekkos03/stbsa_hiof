@@ -11,7 +11,7 @@ function MainPageCountryDestination() {
     const [countries, setCountry] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/allcountry')
+        fetch('http://localhost:8080/allCountries')
             .then(response => response.json())
             .then(data => setCountry(data))
             .catch(error => console.error(error));
