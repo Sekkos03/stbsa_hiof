@@ -1,4 +1,4 @@
-package com.example.software;
+package com.example.software.Entity;
 
 public class Tour {
     private int tourID;
@@ -8,6 +8,7 @@ public class Tour {
     private int price;
     private int maxPeople;
     private String tour_picture;
+    private String title;
 
     public Tour() {
     }
@@ -66,5 +67,13 @@ public class Tour {
 
     public void setTour_picture(String toru_picture) {
         this.tour_picture = toru_picture;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
