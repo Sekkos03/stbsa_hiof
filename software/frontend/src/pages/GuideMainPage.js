@@ -2,7 +2,9 @@ import React, {useState} from 'react';
 import Calendar from 'react-calendar';
 
 function GuideMainPage(){
+
     const [date, setDate] = useState(new Date());
+
     return(
         <div>
             <h1>Guide Main Page</h1>
