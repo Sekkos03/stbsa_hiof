@@ -1,10 +1,11 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
 import MainPage from "./pages/MainPage";
 import GuideMainPage from "./pages/GuideMainPage";
-import UserMainPage from "./pages/UserMainPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import ToursPage from "./pages/ToursPage";
+import Shoppingcart from "./pages/Shoppingcart";
 
 function App() {
 
@@ -16,9 +17,10 @@ function App() {
                 <Route path="/" element={<MainPage/>}/>
                 <Route path="/login" element={<Login/>}/>
                 <Route path="/guide" element={<Login/>}/>
+                <Route path="/user/:UserID" element={<MainPage/>} />
+                <Route path="/user/:UserID/tours/:tourID" element={<ToursPage/>}/>
+                <Route path="/user/:UserID/Shoppingcart" element={<Shoppingcart/>}/>
                 <Route path="/GuideMainPage" element={<GuideMainPage/>}/>
-                <Route path="/UserMainPage" element={<UserMainPage/>}/>
-                <Route path="UserMainPage/tours/:tourID" element={<ToursPage/>}/>
             </Routes>
         </BrowserRouter>
     </div>
