@@ -1,6 +1,6 @@
 package com.example.software.RowMapper;
 
-import com.example.software.City;
+import com.example.software.Entity.City;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;

@@ -1,6 +1,6 @@
 package com.example.software.controller;
 
-import com.example.software.City;
+import com.example.software.Entity.City;
 import com.example.software.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;

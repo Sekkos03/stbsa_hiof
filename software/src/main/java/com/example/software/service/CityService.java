@@ -1,6 +1,6 @@
 package com.example.software.service;
 
-import com.example.software.City;
+import com.example.software.Entity.City;
 import com.example.software.RowMapper.CityRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
