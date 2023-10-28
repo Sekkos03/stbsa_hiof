@@ -1,7 +1,7 @@
 package com.example.software.service;
 
 import com.example.software.RowMapper.TourRowMapper;
-import com.example.software.Tour;
+import com.example.software.Entity.Tour;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;

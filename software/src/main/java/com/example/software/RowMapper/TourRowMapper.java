@@ -1,7 +1,6 @@
 package com.example.software.RowMapper;
 
-import com.example.software.Country;
-import com.example.software.Tour;
+import com.example.software.Entity.Tour;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -21,6 +20,7 @@ public class TourRowMapper implements RowMapper<Tour> {
         obj.setPrice(rs.getInt("price"));
         obj.setMaxPeople(rs.getInt("maxPeople"));
         obj.setTour_picture(rs.getString("tour_picture"));
+        obj.setTitle(rs.getString("title"));
         return obj;
     }
 }

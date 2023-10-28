@@ -1,6 +1,6 @@
 package com.example.software.controller;
 
-import com.example.software.Tour;
+import com.example.software.Entity.Tour;
 import com.example.software.service.TourService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
