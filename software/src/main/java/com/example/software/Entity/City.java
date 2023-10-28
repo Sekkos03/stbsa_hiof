@@ -1,4 +1,4 @@
-package com.example.software;
+package com.example.software.Entity;
 
 public class City {
     private int cityID;
