@@ -6,6 +6,7 @@ import GuideMainPage from "./pages/GuideMainPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ToursPage from "./pages/ToursPage";
 import Shoppingcart from "./pages/Shoppingcart";
+import OpprettGuidePage from "./pages/OpprettGuidePage";
 
 function App() {
 
