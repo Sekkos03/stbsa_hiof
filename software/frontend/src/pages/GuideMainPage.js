@@ -1,25 +1,13 @@
 import React, {useState} from 'react';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+import TourList from "../components/TourList";
+import HeaderGuide from "../components/header/HeaderGuide";
 function GuideMainPage(){
-
-    const [date, setDate] = useState(new Date());
 
     return(
         <div>
+            <HeaderGuide/>
             <h1>Guide Main Page</h1>
-            <div className="react-calendar">
-            <div className='calender'>
-                <h1 className='text-center'>Calendar</h1>
-                <div className='calendar-container'>
-                    <Calendar onChange={setDate} value={date} />
-                </div>
-                <p className='text-center'>
-                    <span className='bold'>Selected Date:</span>{' '}
-                    {date.toDateString()}
-                </p>
-            </div>
-            </div>
+            <TourList/>
         </div>
     )
 }

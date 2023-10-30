@@ -20,7 +20,8 @@ function App() {
                 <Route path="/user/:UserID" element={<MainPage/>} />
                 <Route path="/user/:UserID/tours/:tourID" element={<ToursPage/>}/>
                 <Route path="/user/:UserID/Shoppingcart" element={<Shoppingcart/>}/>
-                <Route path="/GuideMainPage" element={<GuideMainPage/>}/>
+                <Route path="/Guide/:GuideID/GuideMainPage" element={<GuideMainPage/>}/>
+                <Route path="/Guide/:GuideID/Opprett-guide" element={<OpprettGuidePage/>}/>
             </Routes>
         </BrowserRouter>
     </div>
