@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Calendar from 'react-calendar';
-
+import 'react-calendar/dist/Calendar.css';
+import './GuideMainPage.css'
 function GuideMainPage(){
 
     const [date, setDate] = useState(new Date());
@@ -8,8 +9,9 @@ function GuideMainPage(){
     return(
         <div>
             <h1>Guide Main Page</h1>
+            <div className="react-calendar">
             <div className='calender'>
-                <h1 className='text-center'>React Calendar</h1>
+                <h1 className='text-center'>Calendar</h1>
                 <div className='calendar-container'>
                     <Calendar onChange={setDate} value={date} />
                 </div>
@@ -17,6 +19,7 @@ function GuideMainPage(){
                     <span className='bold'>Selected Date:</span>{' '}
                     {date.toDateString()}
                 </p>
+            </div>
             </div>
         </div>
     )
