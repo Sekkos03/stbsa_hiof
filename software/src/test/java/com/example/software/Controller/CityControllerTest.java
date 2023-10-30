@@ -30,7 +30,7 @@ public class CityControllerTest {
 
     @BeforeEach
     public void setUp() {
-        // Sample data setup
+
         City city1 = new City();
         city1.setCityID(1);
         city1.setCity("New York");
