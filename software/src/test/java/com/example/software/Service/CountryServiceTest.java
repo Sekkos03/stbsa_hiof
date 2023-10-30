@@ -29,13 +29,13 @@ public class CountryServiceTest {
 
     @BeforeEach
     public void setUp() {
-        // Initialize mocks
+
         MockitoAnnotations.openMocks(this);
     }
 
     @Test
     public void testGetAllCountry() {
-        // Given
+
         Country country = new Country();
         country.setCountryID(1);
         country.setCountry("USA");
@@ -45,7 +45,6 @@ public class CountryServiceTest {
 
         when(jdbcTemplate.query(eq("select * from country "), any(CountryRowMapper.class)))
                 .thenReturn(expectedCountries);
-
 
         List<Country> actualCountries = countryService.getAllCountry();
 
