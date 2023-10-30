@@ -1,7 +1,7 @@
 package com.example.software.controller;
 
 import com.example.software.Entity.Tourist;
-import com.example.software.service.ToursistService;
+import com.example.software.service.TouristService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import java.util.List;
 public class TouristController {
 
     @Autowired
-    private ToursistService touristService;
+    private TouristService touristService;
 
     @GetMapping("/allTourists")
     public List<Tourist> getAllTourists() {

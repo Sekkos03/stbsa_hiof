@@ -74,7 +74,7 @@ public class ShoppingCartControllerTest {
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
 
-        verify(shoppingCartService, times(1)).addTourToShoppingCartForOnePerson(1, 100, "10:00 AM", 4);
+        verify(shoppingCartService, times(1)).addTourToShoppingCartForOnePerson(1, 100, "2025-06-30 13:00:00", 4);
     }
 
     @Test
