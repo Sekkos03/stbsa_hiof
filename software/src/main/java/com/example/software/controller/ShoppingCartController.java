@@ -28,4 +28,9 @@ public class ShoppingCartController {
     public void deleteEntireShoppingCartForOnePerson(@PathVariable int id){
         shoppingCartService.deleteEntireShoppingCartForOnePerson(id);
     }
+
+    @DeleteMapping("/deleteOneShoppingCartItemForOnePerson/user/{userID}/tour/{tourID}")
+    public void deleteOneShoppingCartItemForOnePerson(@PathVariable int userID, @PathVariable int tourID){
+        shoppingCartService.deleteOneShoppingCartItemForOnePerson(userID, tourID);
+    }
 }

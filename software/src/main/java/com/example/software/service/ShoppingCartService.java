@@ -27,4 +27,7 @@ public class ShoppingCartService {
     }
 
 
+    public void deleteOneShoppingCartItemForOnePerson(int userID, int tourID) {
+        jdbcTemplate.update("delete from Shoppingcart where touristID = ? and tourID = ?", userID, tourID);
+    }
 }
