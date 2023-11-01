@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import {useParams} from "react-router-dom";
-import picture from "./picture1.jpg"
 import Header from "../components/header/Header";
 import BookingForm from "../components/BookingForm";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,11 +24,9 @@ function ToursPage(){
         axios.get('http://localhost:8080/tourist/' + UserID)
             .then(response => {
                 setUser(response.data);
-                console.log(UserID)
             })
             .catch(error => {
                 console.error(error);
-                console.log(UserID)
             });
     }, [UserID, tourID]);
 
@@ -41,7 +38,7 @@ function ToursPage(){
                 <div className="row">
                     <div className="col-md-6">
                         <img
-                            src={picture}
+                            src={tour.tour_picture}
                             alt={tour.name}
                             className="img-fluid rounded"
                         />
