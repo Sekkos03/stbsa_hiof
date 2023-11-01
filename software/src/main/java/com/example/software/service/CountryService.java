@@ -14,7 +14,7 @@ public class CountryService {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public List<Country> getAllCountry() {
+    public List<Country> getAllCountries() {
         return jdbcTemplate.query("select * from country ", new CountryRowMapper());
     }
 
