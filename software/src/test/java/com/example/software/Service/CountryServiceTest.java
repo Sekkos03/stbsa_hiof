@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,19 +35,24 @@ public class CountryServiceTest {
     }
 
     @Test
-    public void testGetAllCountry() {
+    public void testGetAllCountries() {
 
-        Country country = new Country();
-        country.setCountryID(1);
-        country.setCountry("USA");
-        country.setCountry_picture("usa_picture_url.jpg"); // Sample picture URL
+        Country country1 = new Country();
+        country1.setCountryID(1);
+        country1.setCountry("USA");
+        country1.setCountry_picture("usa_picture_url.jpg");
 
-        List<Country> expectedCountries = Collections.singletonList(country);
+        Country country2 = new Country();
+        country2.setCountryID(2);
+        country2.setCountry("Canada");
+        country2.setCountry_picture("Canada_picture_url.jpg");
+
+        List<Country> expectedCountries = Arrays.asList(country1, country2);
 
         when(jdbcTemplate.query(eq("select * from country "), any(CountryRowMapper.class)))
                 .thenReturn(expectedCountries);
 
-        List<Country> actualCountries = countryService.getAllCountry();
+        List<Country> actualCountries = countryService.getAllCountries();
 
 
         verify(jdbcTemplate).query(eq("select * from country "), any(CountryRowMapper.class));
