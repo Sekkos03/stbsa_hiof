@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
@@ -44,7 +45,7 @@ function ItemsInShoppingcart({ UserID }) {
         setModalOpen(false);
     };
 
-    // Function to send payment information to the POST API
+
     const sendPaymentInfo = () => {
 
         tours.map( tour => {
@@ -60,17 +61,17 @@ function ItemsInShoppingcart({ UserID }) {
                 .then(response => {
                     console.log(tour)
                     console.log(tour.tourInfo.guideUserID)
-                    // Handle the response from the server if needed
                 })
                 .catch(error => {
                     console.error('Error sending shopping cart to server:', error);
                 });
 
         })
-        window.location.reload();
 
         axios.delete(`http://localhost:8080/deleteEntireShoppingCartForOnePerson/${UserID}`)
             .then((response) => {
+                const updatedTours = [];
+                setTours(updatedTours);
             })
             .catch(error => {
                 console.error('Error clearing shopping cart:', error);
@@ -79,26 +80,56 @@ function ItemsInShoppingcart({ UserID }) {
         setModalOpen(false);
     };
 
+
+    const removeTour = (indexToRemove) => {
+        axios.delete("http://localhost:8080/deleteOneShoppingCartItemForOnePerson/user/" + UserID + "/tour/" + indexToRemove)
+            .then(result => {
+                window.location.reload();
+
+                const updatedTours = tours.filter(tour => tour.tourID !== indexToRemove);
+                setTours(updatedTours);
+
+
+            })
+            .catch(error => {
+                console.error(error)
+                alert("There was an error removing the tour. Please try again.");
+            })
+    }
+
+
     return (
-        <div className="container mt-4">
-            <h2 className="mb-3">Shopping Cart</h2>
+        <div className="container mt-5">
+            <h2 className="mb-4">Shopping Cart</h2>
             <ul className="list-group">
                 {tours.map((item, index) => (
                     <li
                         key={index}
-                        className="list-group-item d-flex justify-content-between align-items-center"
+                        className="list-group-item py-4"
                     >
-                        <div>
-                            <img
-                                src={item.tourInfo.tour_picture}
-                                alt={item.tourInfo.title}
-                                style={{ maxWidth: '50px', maxHeight: '50px' }}
-                            />
-                            {item.tourInfo.title}
-                        </div>
-                        <span className="badge bg-primary rounded-pill">
+                        <div className="d-flex justify-content-between align-items-center">
+                            <div className="d-flex align-items-center">
+                                <img
+                                    src={item.tourInfo.tour_picture}
+                                    alt={item.tourInfo.title}
+                                    className="me-3"
+                                    style={{ maxWidth: '100px', maxHeight: '100px'}}
+                                />
+                                <span style={{ fontSize: '1.5rem' }}>{item.tourInfo.title}</span>
+                            </div>
+                            <div className="d-flex align-items-center">
+                        <span className="badge bg-primary rounded-pill me-3" style={{ fontSize: '1.2rem', padding: '10px 15px' }}>
                             ${item.tourInfo.price}
                         </span>
+                                <Button
+                                    onClick={() => removeTour(item.tourID)}
+                                    className="btn btn-link btn-lg p-0"
+                                    style={{color: 'red'}}
+                                >
+                                    <i className="bi bi-x-circle"></i>
+                                </Button>
+                            </div>
+                        </div>
                     </li>
                 ))}
             </ul>
@@ -130,6 +161,9 @@ function ItemsInShoppingcart({ UserID }) {
                 </div>
             )}
         </div>
+
+
+
     );
 }
 
