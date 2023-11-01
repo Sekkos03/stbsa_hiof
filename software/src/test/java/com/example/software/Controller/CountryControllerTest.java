@@ -6,7 +6,6 @@ import com.example.software.service.CountryService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -52,7 +51,7 @@ public class CountryControllerTest {
         country2.setCountry_picture("canada_picture_url.jpg");
 
         List<Country> countries = Arrays.asList(country1, country2);
-        when(countryService.getAllCountry()).thenReturn(countries);
+        when(countryService.getAllCountries()).thenReturn(countries);
 
 
         mockMvc.perform(get("/allCountries")
