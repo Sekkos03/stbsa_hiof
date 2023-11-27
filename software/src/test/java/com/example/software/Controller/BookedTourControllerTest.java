@@ -12,10 +12,14 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
+import static org.mockito.Mockito.never;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.mockito.Mockito.verify;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyString;
 
 public class BookedTourControllerTest {
 
@@ -51,5 +55,25 @@ public class BookedTourControllerTest {
                 .andExpect(status().isOk());
 
         verify(bookedTourService).addItemToBookedTour(bookedTour.getGuideuserID(), bookedTour.getTouristID(), bookedTour.getTime(), bookedTour.getAmountOfPeople(), bookedTour.getTourID());
+    }
+
+    @Test
+    public void testAddItemToBookedTourWithInvalidData() throws Exception {
+        BookedTour bookedTour = new BookedTour();
+        bookedTour.setGuideuserID(0);
+        bookedTour.setTouristID(2);
+        bookedTour.setTime("10:00:00");
+        bookedTour.setAmountOfPeople(4);
+        bookedTour.setTourID(5);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String bookedTourJson = objectMapper.writeValueAsString(bookedTour);
+
+        mockMvc.perform(post("/addItemToBookedTour")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(bookedTourJson))
+                .andExpect(MockMvcResultMatchers.status().isBadRequest());
+
+        verify(bookedTourService, never()).addItemToBookedTour(anyInt(), anyInt(), anyString(), anyInt(), anyInt());
     }
 }
