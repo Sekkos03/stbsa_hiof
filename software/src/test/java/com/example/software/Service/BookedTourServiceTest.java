@@ -1,7 +1,6 @@
 package com.example.software.Service;
 
 import com.example.software.Entity.BookedTour;
-import com.example.software.Entity.City;
 import com.example.software.RowMapper.BookedTourRowMapper;
 import com.example.software.service.BookedTourService;
 import org.junit.jupiter.api.BeforeEach;
@@ -81,20 +80,29 @@ public class BookedTourServiceTest {
     }
 
     @Test
-    public void testGetAllBookedTours() {
+    public void testGetAllBookedTourss() {
+        // Setting up test data
         List<BookedTour> expectedTours = Arrays.asList(
                 new BookedTour(1, 2, 2, "10:00:00", 4, 6),
                 new BookedTour(4, 5, 1, "15:00:00", 2, 10)
         );
 
-        when(jdbcTemplate.query("select * from bookedTour", new BookedTourRowMapper()))
-                .thenReturn(expectedTours);
+        // Mocking the jdbcTemplate behavior
+        when(jdbcTemplate.query(
+                eq("select * from bookedTour"),
+                any(BookedTourRowMapper.class))
+        ).thenReturn(expectedTours);
 
+        // Method under test
         List<BookedTour> actualTours = bookedTourService.getAllBookedTours();
 
+        // Asserting the results
         assertEquals(expectedTours, actualTours);
 
-        verify(jdbcTemplate).query("select * from bookedTour", new BookedTourRowMapper());
+        // Verifying the jdbcTemplate behavior
+        verify(jdbcTemplate).query(
+                eq("select * from bookedTour"),
+                any(BookedTourRowMapper.class));
     }
 
 
