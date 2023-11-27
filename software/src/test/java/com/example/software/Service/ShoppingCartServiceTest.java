@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class ShoppingCartServiceTest {
@@ -104,5 +105,27 @@ public class ShoppingCartServiceTest {
                 userID,
                 tourID
         );
+    }
+
+    @Test
+    public void testGetEntireShoppingCartForOnePersonNoData() {
+        int touristID = 1;
+
+        when(jdbcTemplate.query(
+                eq("select * from Shoppingcart where touristID = ?"),
+                any(ShoppingCartRowMapper.class),
+                eq(touristID)
+        )).thenReturn(Collections.emptyList());
+
+        List<ShoppingCart> actualCart = shoppingCartService.getEntireShoppingCartForOnePerson(touristID);
+
+
+        verify(jdbcTemplate, times(1)).query(
+                eq("select * from Shoppingcart where touristID = ?"),
+                any(ShoppingCartRowMapper.class),
+                eq(touristID)
+        );
+
+        assertTrue(actualCart.isEmpty());
     }
 }

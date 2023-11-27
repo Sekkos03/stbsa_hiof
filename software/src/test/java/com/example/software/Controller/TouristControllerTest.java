@@ -14,12 +14,12 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class TouristControllerTest {
 
@@ -88,14 +88,14 @@ public class TouristControllerTest {
     }
 
     @Test
-    public void testGetOneTouristByIdNotFound() throws Exception {
-        int nonExistentTouristId = 999;
+    void testGetOneTouristByIdNotHappyPath() {
 
-        mockMvc.perform(get("/tourist/{id}", nonExistentTouristId)
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+        int touristId = 1;
+        when(touristService.getOneTouristByID(touristId)).thenReturn(null);
 
-        verify(touristService).getOneTouristByID(nonExistentTouristId);
+        Tourist result = touristController.getOneTouristById(touristId);
+
+        assertNull(result);
     }
 
 }

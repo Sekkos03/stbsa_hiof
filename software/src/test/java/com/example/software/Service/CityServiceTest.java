@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.Collections;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -49,6 +50,19 @@ public class CityServiceTest {
 
         verify(jdbcTemplate).query(eq("select * from city "), any(CityRowMapper.class));
         assertEquals(expectedCities, actualCities);
+    }
+
+    @Test
+    public void testGetAllCitysNoData() {
+
+        when(jdbcTemplate.query(eq("select * from city "), any(CityRowMapper.class)))
+                .thenReturn(Collections.emptyList());
+
+        List<City> actualCities = cityService.getAllCitys();
+
+        verify(jdbcTemplate).query(eq("select * from city "), any(CityRowMapper.class));
+
+        assertTrue(actualCities.isEmpty());
     }
 }
 

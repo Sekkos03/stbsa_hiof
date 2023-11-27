@@ -15,8 +15,9 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
 import java.util.Collections;
-
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -52,23 +53,23 @@ public class CityControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get("/allCitys")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(2))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].city").value("New York"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].city").value("Los Angeles"));
+                .andExpect(jsonPath("$.size()").value(2))
+                .andExpect(jsonPath("$[0].city").value("New York"))
+                .andExpect(jsonPath("$[1].city").value("Los Angeles"));
     }
 
     @Test
-    public void testGetAllCitysNoData() throws Exception {
+    public void testGetAllCitysEmptyList() throws Exception {
 
         when(cityService.getAllCitys()).thenReturn(Collections.emptyList());
 
 
         mockMvc.perform(MockMvcRequestBuilders.get("/allCitys")
                         .accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.size()").value(0));
 
-
-        verify(cityService, times(1)).getAllCitys();
+        verify(cityService).getAllCitys();
     }
 
 

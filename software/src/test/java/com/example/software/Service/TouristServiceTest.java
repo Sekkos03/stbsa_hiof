@@ -13,6 +13,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import java.util.Arrays;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
@@ -74,5 +75,24 @@ public class TouristServiceTest {
 
         verify(jdbcTemplate).queryForObject(eq("select * from tourists where touristID = ?"), any(TouristRowMapper.class), eq(1));
         assertEquals(expectedTourist, actualTourist);
+    }
+
+    @Test
+    public void testGetOneTouristByIDNotFound() {
+        // Given
+        int touristID = 1;
+
+        // Arrange: Set up the JdbcTemplate to return null
+        when(jdbcTemplate.queryForObject(eq("select * from tourists where touristID = ?"), any(TouristRowMapper.class), eq(touristID)))
+                .thenReturn(null);
+
+        // When
+        Tourist actualTourist = touristService.getOneTouristByID(touristID);
+
+        // Then
+        verify(jdbcTemplate).queryForObject(eq("select * from tourists where touristID = ?"), any(TouristRowMapper.class), eq(touristID));
+
+        // Assert: Ensure that the actualTourist is null
+        assertNull(actualTourist);
     }
 }

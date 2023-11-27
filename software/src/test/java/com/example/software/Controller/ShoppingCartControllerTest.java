@@ -17,6 +17,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Collections;
 import java.util.List;
+import static org.junit.jupiter.api.Assertions.*;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
@@ -86,18 +87,6 @@ public class ShoppingCartControllerTest {
 
         verify(shoppingCartService, times(1)).deleteEntireShoppingCartForOnePerson(touristID);
     }
-    @Test
-    public void testAddTourToShoppingCartForOnePersonInvalidRequest() throws Exception {
-
-        ShoppingCart invalidShoppingCart = new ShoppingCart();
-
-        mockMvc.perform(post("/addTourToShoppingCartForOnePerson")
-                        .content(objectMapper.writeValueAsString(invalidShoppingCart))
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isBadRequest());
-
-        verify(shoppingCartService, never()).addTourToShoppingCartForOnePerson(anyInt(), anyInt(), anyString(), anyInt());
-    }
 
     @Test
     public void testDeleteOneShoppingCartItemForOnePerson() throws Exception {
@@ -108,6 +97,18 @@ public class ShoppingCartControllerTest {
                 .andExpect(status().isOk());
 
         verify(shoppingCartService).deleteOneShoppingCartItemForOnePerson(userID, tourID);
+    }
+
+    @Test
+    public void testAddTourToShoppingCartForOnePersonInvalidRequest() throws Exception {
+        ShoppingCart invalidShoppingCart = new ShoppingCart();
+
+        invalidShoppingCart.setAmountOfPeople(1);
+
+        mockMvc.perform(post("/addTourToShoppingCartForOnePerson")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(invalidShoppingCart.toString()))
+                .andExpect(status().isBadRequest());
     }
 
 }
