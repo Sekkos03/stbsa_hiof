@@ -11,6 +11,15 @@ public class BookedTour {
     public BookedTour() {
     }
 
+    public BookedTour(int bookedTourID, int guideuserID, int touristID, String time, int amountOfPeople, int tourID) {
+        this.bookedTourID = bookedTourID;
+        this.guideuserID = guideuserID;
+        this.touristID = touristID;
+        this.time = time;
+        this.amountOfPeople = amountOfPeople;
+        this.tourID = tourID;
+    }
+
     public int getTourID() {
         return tourID;
     }

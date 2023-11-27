@@ -14,7 +14,7 @@ function Login() {
                 <button className="btn btn-primary btn-lg">login as user</button>
                 </Link>
                 <Link to="/admin" className={"px-1 text-white"}>
-                    <button className="btn btn-primary btn-lg">login as user</button>
+                    <button className="btn btn-primary btn-lg">login as Admin</button>
                 </Link>
             </div>
         </div>
