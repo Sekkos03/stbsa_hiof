@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ToursPage from "./pages/ToursPage";
 import Shoppingcart from "./pages/Shoppingcart";
 import MakeNewTour from "./pages/MakeNewTour";
+import Admin from "./pages/Admin";
 
 function App() {
 
