@@ -3,6 +3,7 @@ package com.example.software.Controller;
 import com.example.software.Entity.Country;
 import com.example.software.controller.CountryController;
 import com.example.software.service.CountryService;
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -62,12 +63,13 @@ public class CountryControllerTest {
                 .andExpect(jsonPath("$[1].country").value("Canada"));
     }
     @Test
-    public void testGetAllCountriesNoData() throws Exception {
+    public void testGetAllCountriesReturnsEmptyList() throws Exception {
+
         when(countryService.getAllCountries()).thenReturn(Collections.emptyList());
 
         mockMvc.perform(get("/allCountries")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", Matchers.hasSize(0)));
     }
-
 }
