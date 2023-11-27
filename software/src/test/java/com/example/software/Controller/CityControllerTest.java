@@ -55,4 +55,6 @@ public class CityControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].city").value("New York"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].city").value("Los Angeles"));
     }
+
+
 }
