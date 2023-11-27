@@ -29,8 +29,8 @@ public class BookedTourController {
         bookedTourService.deleteItemFromBookedTour(bookedTourID);
     }
 
-    @GetMapping("/getAllBookdeTours")
-    public List<BookedTour> getAllBookdeTours(){
+    @GetMapping("/getAllBookedTours")
+    public List<BookedTour> getAllBookedTours(){
         return bookedTourService.getAllBookedTours();
     }
 }

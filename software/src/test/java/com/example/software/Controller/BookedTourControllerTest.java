@@ -18,8 +18,7 @@ import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -78,9 +77,8 @@ public class BookedTourControllerTest {
     public void testGetAllBookedTourForOneGuide() throws Exception {
         int guideUserID = 1; // Example guide user ID
         List<BookedTour> expectedTours = Arrays.asList(
-                new BookedTour(1, 2, 3, "10:00:00", 4, 5),
-                new BookedTour(/* initialize with valid data */)
-                // Add more BookedTour instances as needed
+                new BookedTour(1, 1, 3, "10:00:00", 4, 5),
+                new BookedTour(3, 1, 2, "15:00:00", 19, 2)
         );
 
         when(bookedTourService.GetAllBookedTourForOneGuide(guideUserID)).thenReturn(expectedTours);
@@ -94,6 +92,32 @@ public class BookedTourControllerTest {
                 .andExpect(jsonPath("$[0].time").value(expectedTours.get(0).getTime()))
                 .andExpect(jsonPath("$[0].amountOfPeople").value(expectedTours.get(0).getAmountOfPeople()))
                 .andExpect(jsonPath("$[0].tourID").value(expectedTours.get(0).getTourID()))
+        ;
+    }
+
+    @Test
+    public void testDeleteItemFromBookedTour() throws Exception {
+        int bookedTourID = 123; // Example booked tour ID
+
+        mockMvc.perform(delete("/deleteOneItemFromBookedTour/{bookedTourID}", bookedTourID))
+                .andExpect(status().isOk());
+
+        verify(bookedTourService).deleteItemFromBookedTour(bookedTourID);
+    }
+
+    @Test
+    public void testGetAllBookedTours() throws Exception {
+        List<BookedTour> expectedTours = Arrays.asList(
+                new BookedTour(1, 1, 3, "10:00:00", 4, 5),
+                new BookedTour(3, 1, 2, "15:00:00", 19, 2)
+        );
+
+        when(bookedTourService.getAllBookedTours()).thenReturn(expectedTours);
+
+
+        mockMvc.perform(get("/getAllBookedTours"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(expectedTours.size())))
         ;
     }
 
