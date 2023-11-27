@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
@@ -60,4 +61,13 @@ public class CountryControllerTest {
                 .andExpect(jsonPath("$[0].country").value("USA"))
                 .andExpect(jsonPath("$[1].country").value("Canada"));
     }
+    @Test
+    public void testGetAllCountriesNoData() throws Exception {
+        when(countryService.getAllCountries()).thenReturn(Collections.emptyList());
+
+        mockMvc.perform(get("/allCountries")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
+
 }
