@@ -52,4 +52,27 @@ public class BookedTourControllerTest {
 
         verify(bookedTourService).addItemToBookedTour(bookedTour.getGuideuserID(), bookedTour.getTouristID(), bookedTour.getTime(), bookedTour.getAmountOfPeople(), bookedTour.getTourID());
     }
+
+    @Test
+    public void testAddItemToBookedTourWithInvalidData() throws Exception {
+        // Creating BookedTour object with invalid data (e.g., negative guideuserID)
+        BookedTour bookedTour = new BookedTour();
+        bookedTour.setGuideuserID(-1);
+        bookedTour.setTouristID(2);
+        bookedTour.setTime("10:00:00");
+        bookedTour.setAmountOfPeople(4);
+        bookedTour.setTourID(5);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        String bookedTourJson = objectMapper.writeValueAsString(bookedTour);
+
+        // Performing the request and expecting a 400 status code
+        mockMvc.perform(post("/addItemToBookedTour")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(bookedTourJson))
+                .andExpect(status().isBadRequest());
+
+        // Verifying that the service method is never called with invalid data
+        verify(bookedTourService).addItemToBookedTour(bookedTour.getGuideuserID(), bookedTour.getTouristID(), bookedTour.getTime(), bookedTour.getAmountOfPeople(), bookedTour.getTourID());
+    }
 }
