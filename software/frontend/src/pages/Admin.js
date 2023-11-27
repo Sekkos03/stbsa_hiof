@@ -9,7 +9,7 @@ function Admin() {
     const [BookedTours, setBookedTours] = useState([]);
 
     useEffect(() => {
-        axios.get("http://localhost:8080/getAllBookdeTours")
+        axios.get("http://localhost:8080/getAllBookedTours")
             .then(response => {
                 setBookedTours(response.data);
             })
@@ -17,8 +17,6 @@ function Admin() {
                 console.error(error);
             });
         }, []);
-
-
 
     return (
         <>
