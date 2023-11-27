@@ -86,5 +86,17 @@ public class ShoppingCartControllerTest {
 
         verify(shoppingCartService, times(1)).deleteEntireShoppingCartForOnePerson(touristID);
     }
+    @Test
+    public void testAddTourToShoppingCartForOnePersonInvalidRequest() throws Exception {
+
+        ShoppingCart invalidShoppingCart = new ShoppingCart();
+
+        mockMvc.perform(post("/addTourToShoppingCartForOnePerson")
+                        .content(objectMapper.writeValueAsString(invalidShoppingCart))
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+
+        verify(shoppingCartService, never()).addTourToShoppingCartForOnePerson(anyInt(), anyInt(), anyString(), anyInt());
+    }
 }
 

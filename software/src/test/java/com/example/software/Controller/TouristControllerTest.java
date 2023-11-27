@@ -86,4 +86,15 @@ public class TouristControllerTest {
 
         verify(touristService).getOneTouristByID(touristId);
     }
+
+    @Test
+    public void testGetOneTouristByIdNotFound() throws Exception {
+        int nonExistentTouristId = 999;
+
+        mockMvc.perform(get("/tourist/{id}", nonExistentTouristId)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+
+        verify(touristService).getOneTouristByID(nonExistentTouristId);
+    }
 }

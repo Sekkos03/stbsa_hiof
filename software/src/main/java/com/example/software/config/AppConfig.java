@@ -6,9 +6,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import javax.sql.DataSource;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 @Configuration
 public class AppConfig {
+
+    public AppConfig() throws SQLException {
+    }
 
     @Bean
     public DataSource dataSource() {

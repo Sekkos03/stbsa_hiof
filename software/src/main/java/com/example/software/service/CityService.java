@@ -16,5 +16,4 @@ public class CityService {
     public List<City> getAllCitys() {
         return jdbcTemplate.query("select * from city ", new CityRowMapper());
     }
-
 }
