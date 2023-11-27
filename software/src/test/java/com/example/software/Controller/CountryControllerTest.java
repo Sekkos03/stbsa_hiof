@@ -67,7 +67,7 @@ public class CountryControllerTest {
 
         mockMvc.perform(get("/allCountries")
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk());
     }
 
 }
