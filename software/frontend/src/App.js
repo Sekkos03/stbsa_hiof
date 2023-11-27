@@ -6,7 +6,7 @@ import GuideMainPage from "./pages/GuideMainPage";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ToursPage from "./pages/ToursPage";
 import Shoppingcart from "./pages/Shoppingcart";
-import OpprettGuidePage from "./pages/OpprettGuidePage";
+import MakeNewTour from "./pages/MakeNewTour";
 
 function App() {
 
@@ -22,7 +22,8 @@ function App() {
                 <Route path="/user/:UserID/tours/:tourID" element={<ToursPage/>}/>
                 <Route path="/user/:UserID/Shoppingcart" element={<Shoppingcart/>}/>
                 <Route path="/Guide/:GuideID/GuideMainPage" element={<GuideMainPage/>}/>
-                <Route path="/Guide/:GuideID/Opprett-guide" element={<OpprettGuidePage/>}/>
+                <Route path="/Guide/:GuideID/NewTour" element={<MakeNewTour/>}/>
+                <Route path="/Admin" element={<Admin/>}/>
             </Routes>
         </BrowserRouter>
     </div>

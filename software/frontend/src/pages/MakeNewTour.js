@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import BookedTourList from "../components/BookedTourList";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './MainPage.css'
 import HeaderGuide from "../components/header/HeaderGuide";
 import {useParams} from "react-router-dom";
 
 
-function GuideMainPage(){
+
+function MakeNewTour() {
 
     const { GuideID } = useParams();
     const [Guide, setGuide] = useState({});
@@ -22,14 +24,12 @@ function GuideMainPage(){
     }, [GuideID]);
 
 
-    return(
+    return (
         <>
             <HeaderGuide User={Guide}/>
-            <div className="container" style={{ marginBottom: '5px' , marginTop: '5px'}}>
-            <BookedTourList User={Guide}/>
-            </div>
         </>
-    )
+    );
 }
 
-export default GuideMainPage
+export default MakeNewTour;
+

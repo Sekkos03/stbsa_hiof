@@ -40,6 +40,7 @@ public class BookedTourControllerTest {
         bookedTour.setTouristID(2);
         bookedTour.setTime("10:00:00");
         bookedTour.setAmountOfPeople(4);
+        bookedTour.setTourID(5);
 
         ObjectMapper objectMapper = new ObjectMapper();
         String bookedTourJson = objectMapper.writeValueAsString(bookedTour);
@@ -49,6 +50,6 @@ public class BookedTourControllerTest {
                         .content(bookedTourJson))
                 .andExpect(status().isOk());
 
-        verify(bookedTourService).addItemToBookedTour(bookedTour.getGuideuserID(), bookedTour.getTouristID(), bookedTour.getTime(), bookedTour.getAmountOfPeople());
+        verify(bookedTourService).addItemToBookedTour(bookedTour.getGuideuserID(), bookedTour.getTouristID(), bookedTour.getTime(), bookedTour.getAmountOfPeople(), bookedTour.getTourID());
     }
 }

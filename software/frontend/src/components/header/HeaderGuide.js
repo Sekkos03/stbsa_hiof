@@ -2,7 +2,8 @@ import React from 'react';
 import Button from "react-bootstrap/button";
 import {Link} from "react-router-dom";
 
-function Header() {
+function Header({User}) {
+
     return (
         <header className="p-3 bg-dark text-white">
             <div className="container">
@@ -11,10 +12,16 @@ function Header() {
                         <svg className="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlinkHref="#bootstrap"></use></svg>
                     </a>
 
+
+
+
                     <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" className="nav-link px-2 text-secondary">Home</a></li>
-                        <Link to={"/opprett-guide"}>
-                        <li><a href="#" className="nav-link px-2 text-secondary">Opprett guide</a></li>
+                        <Link to={"http://localhost:3000/Guide/" + User.guideUsersID + "/GuideMainPage"} style={{ textDecoration: 'none' }}>
+                            <li className="nav-link px-2 text-secondary">Home</li>
+                        </Link>
+
+                        <Link to={"http://localhost:3000/Guide/" + User.guideUsersID + "/NewTour"} style={{ textDecoration: 'none' }}>
+                            <li className="nav-link px-2 text-secondary">Opprett ny Tour</li>
                         </Link>
                     </ul>
 
@@ -25,7 +32,8 @@ function Header() {
                     <div className="text-end">
                         <Link to={"/user/" + "/Shoppingcart"}>
                         <i className="bi bi-gear"></i>
-                            </Link>
+                        </Link>
+                        <span className="text-white me-3">Welcome, {User.firstName}</span>
                     </div>
                 </div>
             </div>

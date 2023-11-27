@@ -55,6 +55,7 @@ function ItemsInShoppingcart({ UserID }) {
                 touristID: tour.touristID,
                 time: tour.time,
                 amountOfPeople: tour.amountOfPeople,
+                tourID: tour.tourInfo.tourID
             };
 
             axios.post("http://localhost:8080/addItemToBookedTour", TourInfo)

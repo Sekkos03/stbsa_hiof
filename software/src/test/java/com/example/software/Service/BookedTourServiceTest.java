@@ -31,11 +31,12 @@ public class BookedTourServiceTest {
         int touristID = 2;
         String time = "10:00:00";
         int amountOfPeople = 4;
+        int tourID = 3;
 
         // When
-        bookedTourService.addItemToBookedTour(guideUserID, touristID, time, amountOfPeople);
+        bookedTourService.addItemToBookedTour(guideUserID, touristID, time, amountOfPeople, tourID);
 
         // Then
-        verify(jdbcTemplate).update("insert into bookedTour (guideUserID, touristID, time, amountOfPeople) values (?, ?, ?, ?)", guideUserID, touristID, time, amountOfPeople);
+        verify(jdbcTemplate).update("insert into bookedTour (guideUserID, touristID, time, amountOfPeople, tourID) values (?, ?, ?, ?, ?)", guideUserID, touristID, time, amountOfPeople, tourID);
     }
 }

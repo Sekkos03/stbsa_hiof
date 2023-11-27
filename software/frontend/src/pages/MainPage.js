@@ -34,8 +34,6 @@ function MainPage() {
             <PopulareCountryDestination/>
             <MainPageCityDestination/>
             <PopularTour />
-
-
         </>
     );
 }

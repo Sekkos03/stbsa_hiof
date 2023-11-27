@@ -13,6 +13,9 @@ function Login() {
                 <Link to="/user/1" className={"px-1 text-white"}>
                 <button className="btn btn-primary btn-lg">login as user</button>
                 </Link>
+                <Link to="/admin" className={"px-1 text-white"}>
+                    <button className="btn btn-primary btn-lg">login as user</button>
+                </Link>
             </div>
         </div>
     );
