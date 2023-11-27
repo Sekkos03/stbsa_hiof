@@ -90,7 +90,7 @@ public class TouristControllerTest {
     @Test
     void testGetOneTouristByIdNotHappyPath() {
 
-        int touristId = 1;
+        int touristId = 999;
         when(touristService.getOneTouristByID(touristId)).thenReturn(null);
 
         Tourist result = touristController.getOneTouristById(touristId);
