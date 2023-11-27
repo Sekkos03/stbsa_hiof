@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -70,5 +71,17 @@ public class TourControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.tourID", is(1)));
     }
+
+    @Test
+    public void testGetOneTourByIdNonExistent() throws Exception {
+        int nonExistentTourId = 999;
+        when(tourService.getOneTourByID(nonExistentTourId)).thenReturn(null);
+
+        mockMvc.perform(get("/OneTour/{id}", nonExistentTourId))
+                .andExpect(status().isNotFound());
+
+        verify(tourService).getOneTourByID(nonExistentTourId);
+    }
+
 }
 

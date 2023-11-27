@@ -97,4 +97,5 @@ public class TouristControllerTest {
 
         verify(touristService).getOneTouristByID(nonExistentTouristId);
     }
+
 }
