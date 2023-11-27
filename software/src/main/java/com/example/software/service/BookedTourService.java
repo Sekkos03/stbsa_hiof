@@ -25,4 +25,8 @@ public class BookedTourService {
     public void deleteItemFromBookedTour(int bookedTourID) {
         jdbcTemplate.update("delete from bookedTour where bookedTourID = ?", bookedTourID);
     }
+
+    public List<BookedTour> getAllBookdeTours() {
+        return jdbcTemplate.query("select * from bookedTour", new BookedTourRowMapper());
+    }
 }

@@ -28,4 +28,9 @@ public class BookedTourController {
     public void deleteItemFromBookedTour(@PathVariable int bookedTourID){
         bookedTourService.deleteItemFromBookedTour(bookedTourID);
     }
+
+    @GetMapping("/getAllBookdeTours")
+    public List<BookedTour> getAllBookdeTours(){
+        return bookedTourService.getAllBookdeTours();
+    }
 }
