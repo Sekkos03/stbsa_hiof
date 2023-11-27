@@ -97,10 +97,8 @@ public class ShoppingCartServiceTest {
         int userID = 1; // Example user ID
         int tourID = 100; // Example tour ID
 
-        // Method under test
         shoppingCartService.deleteOneShoppingCartItemForOnePerson(userID, tourID);
 
-        // Verifying the jdbcTemplate behavior
         verify(jdbcTemplate).update(
                 "delete from Shoppingcart where touristID = ? and tourID = ?",
                 userID,
