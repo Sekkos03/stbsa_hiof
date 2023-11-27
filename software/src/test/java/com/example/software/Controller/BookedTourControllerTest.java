@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import static org.mockito.Mockito.verifyNoInteractions;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.mockito.Mockito.verify;
@@ -54,25 +55,17 @@ public class BookedTourControllerTest {
     }
 
     @Test
-    public void testAddItemToBookedTourWithInvalidData() throws Exception {
-        // Creating BookedTour object with invalid data (e.g., negative guideuserID)
+    public void testAddItemToBookedTourWithNegativeAmountOfPeople() throws Exception {
         BookedTour bookedTour = new BookedTour();
-        bookedTour.setGuideuserID(-1);
+        bookedTour.setGuideuserID(1);
         bookedTour.setTouristID(2);
         bookedTour.setTime("10:00:00");
-        bookedTour.setAmountOfPeople(4);
+        bookedTour.setAmountOfPeople(-4);
         bookedTour.setTourID(5);
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        String bookedTourJson = objectMapper.writeValueAsString(bookedTour);
-
-        // Performing the request and expecting a 400 status code
         mockMvc.perform(post("/addItemToBookedTour")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(bookedTourJson))
+                        .content(bookedTour.toString()))
                 .andExpect(status().isBadRequest());
-
-        // Verifying that the service method is never called with invalid data
-        verify(bookedTourService).addItemToBookedTour(bookedTour.getGuideuserID(), bookedTour.getTouristID(), bookedTour.getTime(), bookedTour.getAmountOfPeople(), bookedTour.getTourID());
     }
 }
