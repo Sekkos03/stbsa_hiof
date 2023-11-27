@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import BookedTourList from "../components/BookedTourList";
 import HeaderGuide from "../components/header/HeaderGuide";
 import {useParams} from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function GuideMainPage(){
 
