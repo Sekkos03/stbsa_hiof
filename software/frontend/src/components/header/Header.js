@@ -2,8 +2,10 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import {Button} from "react-bootstrap";
 
 function Header({user}) {
+    
     return (
         <header className="p-3 bg-dark text-white">
             <div className="container">
@@ -40,9 +42,13 @@ function Header({user}) {
                                     <i className="bi bi-cart" style={{ fontSize: '24px', marginRight: '8px' }}></i>
                                 </Link>
                                 <span className="text-white me-3">Welcome, {user.firstName}</span>
+                                <Link to={"http://localhost:3000/"}>
+                                    <Button className="btn btn-secondary" >
+                                        Log out
+                                    </Button>
+                                </Link>
                             </div>
                         ) : (
-                            // Display login or signup links if the user is not logged in
                             <>
                                 <Link to="/login" className="btn btn-primary me-2">Log In</Link>
                                 <Link to="/signup" className="btn btn-secondary">Sign Up</Link>

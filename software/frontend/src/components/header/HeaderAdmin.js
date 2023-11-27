@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap-icons/font/bootstrap-icons.css";
+import Button from "react-bootstrap/Button";
 
 function HeaderAdmin() {
     return (
@@ -26,6 +27,11 @@ function HeaderAdmin() {
                             <i className="bi bi-gear"></i>
                         </Link>
                         <span className="text-white me-3">Welcome, Admin</span>
+                        <Link to={"http://localhost:3000/"}>
+                            <Button className="btn btn-secondary" >
+                                Log out
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>

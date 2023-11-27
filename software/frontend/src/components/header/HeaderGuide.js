@@ -34,6 +34,11 @@ function Header({User}) {
                         <i className="bi bi-gear"></i>
                         </Link>
                         <span className="text-white me-3">Welcome, {User.firstName}</span>
+                        <Link to={"http://localhost:3000/"}>
+                            <Button className="btn btn-secondary" >
+                                Log out
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </div>
