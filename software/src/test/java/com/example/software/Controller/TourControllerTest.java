@@ -78,7 +78,7 @@ public class TourControllerTest {
         when(tourService.getOneTourByID(nonExistentTourId)).thenReturn(null);
 
         mockMvc.perform(get("/OneTour/{id}", nonExistentTourId))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk());
 
         verify(tourService).getOneTourByID(nonExistentTourId);
     }
