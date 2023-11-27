@@ -6,8 +6,17 @@ public class BookedTour {
     private int touristID;
     private String time;
     private int amountOfPeople;
+    private int tourID;
 
     public BookedTour() {
+    }
+
+    public int getTourID() {
+        return tourID;
+    }
+
+    public void setTourID(int tourID) {
+        this.tourID = tourID;
     }
 
     public int getBookedTourID() {

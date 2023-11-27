@@ -19,6 +19,7 @@ public class BookedTourRowMapper implements RowMapper<BookedTour> {
         obj.setTouristID(rs.getInt("touristID"));
         obj.setTime(rs.getString("time"));
         obj.setAmountOfPeople(rs.getInt("amountOfPeople"));
+        obj.setTourID(rs.getInt("tourID"));
 
         return obj;
     }
