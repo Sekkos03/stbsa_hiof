@@ -13,10 +13,15 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.mockito.Mockito.verifyNoInteractions;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.hamcrest.Matchers.hasSize;
+import static org.mockito.Mockito.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static org.mockito.Mockito.verify;
 
 public class BookedTourControllerTest {
 
@@ -68,4 +73,28 @@ public class BookedTourControllerTest {
                         .content(bookedTour.toString()))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    public void testGetAllBookedTourForOneGuide() throws Exception {
+        int guideUserID = 1; // Example guide user ID
+        List<BookedTour> expectedTours = Arrays.asList(
+                new BookedTour(1, 2, 3, "10:00:00", 4, 5),
+                new BookedTour(/* initialize with valid data */)
+                // Add more BookedTour instances as needed
+        );
+
+        when(bookedTourService.GetAllBookedTourForOneGuide(guideUserID)).thenReturn(expectedTours);
+
+        mockMvc.perform(get("/getAllBookedTourForOneGuide/{guideUserID}", guideUserID))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", hasSize(expectedTours.size())))
+                .andExpect(jsonPath("$[0].bookedTourID").value(expectedTours.get(0).getBookedTourID()))
+                .andExpect(jsonPath("$[0].guideuserID").value(expectedTours.get(0).getGuideuserID()))
+                .andExpect(jsonPath("$[0].touristID").value(expectedTours.get(0).getTouristID()))
+                .andExpect(jsonPath("$[0].time").value(expectedTours.get(0).getTime()))
+                .andExpect(jsonPath("$[0].amountOfPeople").value(expectedTours.get(0).getAmountOfPeople()))
+                .andExpect(jsonPath("$[0].tourID").value(expectedTours.get(0).getTourID()))
+        ;
+    }
+
 }
