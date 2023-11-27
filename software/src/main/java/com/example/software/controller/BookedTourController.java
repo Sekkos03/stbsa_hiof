@@ -31,6 +31,6 @@ public class BookedTourController {
 
     @GetMapping("/getAllBookdeTours")
     public List<BookedTour> getAllBookdeTours(){
-        return bookedTourService.getAllBookdeTours();
+        return bookedTourService.getAllBookedTours();
     }
 }
