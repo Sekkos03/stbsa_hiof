@@ -98,5 +98,17 @@ public class ShoppingCartControllerTest {
 
         verify(shoppingCartService, never()).addTourToShoppingCartForOnePerson(anyInt(), anyInt(), anyString(), anyInt());
     }
+
+    @Test
+    public void testDeleteOneShoppingCartItemForOnePerson() throws Exception {
+        int userID = 1;
+        int tourID = 100;
+
+        mockMvc.perform(delete("/deleteOneShoppingCartItemForOnePerson/user/{userID}/tour/{tourID}", userID, tourID))
+                .andExpect(status().isOk());
+
+        verify(shoppingCartService).deleteOneShoppingCartItemForOnePerson(userID, tourID);
+    }
+
 }
 
