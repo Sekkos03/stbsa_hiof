@@ -22,7 +22,6 @@ function Admin() {
         <>
             <HeaderAdmin/>
             <div className="container">
-                <h1>Admin</h1>
                 <div className="h1" style={{ marginBottom: '5vh' }}>All Booked Tours</div>
                 <div className="row">
                     {BookedTours.map((BookedTour) => (

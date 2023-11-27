@@ -36,7 +36,6 @@ function Tour({ bookedTour }) {
             <div className="card">
                 <div className="card-body">
                     <h5 className="card-title">{Tour.title}</h5>
-                    <p className="card-text">{Tour.tour_picture}</p>
                     <p className="card-text">amount of people: {bookedTour.amountOfPeople}</p>
                     <p className="card-text">Date: {bookedTour.time}</p>
                     <Button
