@@ -44,6 +44,31 @@
             <artifactId>spring-jdbc</artifactId>
             <version>6.0.6</version>
         </dependency>
+        <dependency>
+            <groupId>org.sakaiproject</groupId>
+            <artifactId>sakai-userdetail-provider</artifactId>
+            <version>23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject</groupId>
+            <artifactId>sakai-userdetail-provider</artifactId>
+            <version>23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject</groupId>
+            <artifactId>sakai-userdetail-provider</artifactId>
+            <version>23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject</groupId>
+            <artifactId>sakai-userdetail-provider</artifactId>
+            <version>23.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.sakaiproject</groupId>
+            <artifactId>sakai-userdetail-provider</artifactId>
+            <version>23.0</version>
+        </dependency>
     </dependencies>
 
     <build>

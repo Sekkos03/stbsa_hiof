@@ -14,8 +14,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Arrays;
+import java.util.Collections;
 
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -54,6 +55,20 @@ public class CityControllerTest {
                 .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(2))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[0].city").value("New York"))
                 .andExpect(MockMvcResultMatchers.jsonPath("$[1].city").value("Los Angeles"));
+    }
+
+    @Test
+    public void testGetAllCitysNoData() throws Exception {
+
+        when(cityService.getAllCitys()).thenReturn(Collections.emptyList());
+
+
+        mockMvc.perform(MockMvcRequestBuilders.get("/allCitys")
+                        .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+
+
+        verify(cityService, times(1)).getAllCitys();
     }
 
 
