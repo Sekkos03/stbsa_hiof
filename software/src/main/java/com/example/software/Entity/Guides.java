@@ -11,6 +11,15 @@ public class Guides {
     public Guides() {
     }
 
+    public Guides(int guideUsersID, String firstName, String lastName, String email, int phoneNumber, String guide_Picture) {
+        this.guideUsersID = guideUsersID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.guide_Picture = guide_Picture;
+    }
+
     public int getGuideUsersID() {
         return guideUsersID;
     }
